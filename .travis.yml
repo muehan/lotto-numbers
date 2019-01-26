@@ -4,10 +4,12 @@ node_js:
 branches:
   only:
   - master
+before_install:
+- npm install -g @angular/cli
 before_script:
 - npm install
 script:
-- if [ "$TRAVIS_BRANCH" = "master" ]; then ng build --prod; fi
+- ng build --prod;
 deploy:
   provider: heroku
   api_key:
