@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lotto-numbers';
+  
+  public generateNumberBetweenOneAnd(max: number): number {
+    return Math.floor(Math.random() * max) + 1;
+  }
 }
