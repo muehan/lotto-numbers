@@ -17,8 +17,15 @@ export class AppComponent {
   public number4: number = 0;
   public number5: number = 0;
   public number6: number = 0;
-
   public additionalNumber: number = 0;
+
+  public euroNumber1: number = 0;
+  public euroNumber2: number = 0;
+  public euroNumber3: number = 0;
+  public euroNumber4: number = 0;
+  public euroNumber5: number = 0;
+  public additionalEuroNumber1: number = 0;
+  public additionalEuroNumber2: number = 0;
   
   public refresNumbers() : void {
     this.number1 = this.generateNumberBetweenOneAnd(42);
@@ -28,6 +35,14 @@ export class AppComponent {
     this.number5 = this.generateNumberBetweenOneAnd(42);
     this.number6 = this.generateNumberBetweenOneAnd(42);
     this.additionalNumber = this.generateNumberBetweenOneAnd(6);
+
+    this.euroNumber1 = this.generateNumberBetweenOneAnd(50);
+    this.euroNumber2 = this.generateNumberBetweenOneAnd(50);
+    this.euroNumber3 = this.generateNumberBetweenOneAnd(50);
+    this.euroNumber4 = this.generateNumberBetweenOneAnd(50);
+    this.euroNumber5 = this.generateNumberBetweenOneAnd(50);
+    this.additionalEuroNumber1 = this.generateNumberBetweenOneAnd(12);
+    this.additionalEuroNumber2 = this.generateNumberBetweenOneAnd(12);
   }
 
   private generateNumberBetweenOneAnd(max: number): number {
