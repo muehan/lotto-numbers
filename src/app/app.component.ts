@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(){
+  constructor() {
     this.refresNumbers();
   }
 
@@ -26,26 +26,34 @@ export class AppComponent {
   public euroNumber5: number = 0;
   public additionalEuroNumber1: number = 0;
   public additionalEuroNumber2: number = 0;
-  
-  public refresNumbers() : void {
+
+  public refresNumbers(): void {
     this.number1 = this.generateNumberBetweenOneAnd(42);
-    this.number2 = this.generateNumberBetweenOneAnd(42);
-    this.number3 = this.generateNumberBetweenOneAnd(42);
-    this.number4 = this.generateNumberBetweenOneAnd(42);
-    this.number5 = this.generateNumberBetweenOneAnd(42);
-    this.number6 = this.generateNumberBetweenOneAnd(42);
+    this.number2 = this.generateNumberBetweenOneAnd(42, [this.number1]);
+    this.number3 = this.generateNumberBetweenOneAnd(42, [this.number1, this.number2]);
+    this.number4 = this.generateNumberBetweenOneAnd(42, [this.number1, this.number2, this.number3]);
+    this.number5 = this.generateNumberBetweenOneAnd(42, [this.number1, this.number2, this.number3, this.number4]);
+    this.number6 = this.generateNumberBetweenOneAnd(42, [this.number1, this.number2, this.number3, this.number4, this.number5]);
     this.additionalNumber = this.generateNumberBetweenOneAnd(6);
 
     this.euroNumber1 = this.generateNumberBetweenOneAnd(50);
-    this.euroNumber2 = this.generateNumberBetweenOneAnd(50);
-    this.euroNumber3 = this.generateNumberBetweenOneAnd(50);
-    this.euroNumber4 = this.generateNumberBetweenOneAnd(50);
-    this.euroNumber5 = this.generateNumberBetweenOneAnd(50);
+    this.euroNumber2 = this.generateNumberBetweenOneAnd(50, [this.euroNumber1]);
+    this.euroNumber3 = this.generateNumberBetweenOneAnd(50, [this.euroNumber1, this.euroNumber2]);
+    this.euroNumber4 = this.generateNumberBetweenOneAnd(50, [this.euroNumber1, this.euroNumber2, this.euroNumber3]);
+    this.euroNumber5 = this.generateNumberBetweenOneAnd(50, [this.euroNumber1, this.euroNumber2, this.euroNumber3, this.euroNumber4]);
     this.additionalEuroNumber1 = this.generateNumberBetweenOneAnd(12);
-    this.additionalEuroNumber2 = this.generateNumberBetweenOneAnd(12);
+    this.additionalEuroNumber2 = this.generateNumberBetweenOneAnd(12, [this.additionalEuroNumber1]);
   }
 
-  private generateNumberBetweenOneAnd(max: number): number {
-    return Math.floor(Math.random() * max) + 1;
+  private generateNumberBetweenOneAnd(max: number, butNot: number[] = null): number {
+    let number = Math.floor(Math.random() * max) + 1;
+
+    if (butNot != null) {
+      while (butNot.indexOf(number) >= 0) {
+        number = Math.floor(Math.random() * max) + 1;
+      }
+    }
+
+    return number;
   }
 }
